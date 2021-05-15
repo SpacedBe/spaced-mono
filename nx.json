@@ -18,7 +18,8 @@
           "build",
           "lint",
           "test",
-          "e2e"
+          "e2e",
+          "build-storybook"
         ]
       }
     },
@@ -33,9 +34,14 @@
     },
     "check-in-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "check-in"
-      ]
+      "implicitDependencies": ["check-in"]
+    },
+    "ui": {
+      "tags": []
+    },
+    "ui-e2e": {
+      "tags": [],
+      "implicitDependencies": ["ui"]
     }
   }
 }
