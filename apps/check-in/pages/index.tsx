@@ -1,15 +1,16 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-import {checkInOut} from "../api/check-in-out";
-import {useEffect, useState} from "react";
+import { checkInOut } from '../api/check-in-out';
+import { useEffect, useState } from 'react';
+import { Flex, Heading, Button } from '@chakra-ui/react';
 
 export async function getStaticProps(context) {
   const data = await checkInOut();
 
   return {
-    props: { data }, // will be passed to the page component as props
-  }
+    props: { data } // will be passed to the page component as props
+  };
 }
 
 const StyledPage = styled.div`
@@ -17,7 +18,7 @@ const StyledPage = styled.div`
   }
 `;
 
-export function Index({data}) {
+export function Index({ data }) {
   const types = ['check-in', 'check-out'];
 
   const [currentType, setType] = useState(types[0]);
@@ -25,12 +26,12 @@ export function Index({data}) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
   const nextQuestion = () => {
-    if(questions[currentQuestionIndex + 1]) {
+    if (questions[currentQuestionIndex + 1]) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
       setCurrentQuestionIndex(0);
     }
-  }
+  };
 
   useEffect(() => {
     setCurrentQuestionIndex(0);
@@ -43,23 +44,34 @@ export function Index({data}) {
   const question = questions[currentQuestionIndex]?.question;
 
   return (
-    <StyledPage style={{padding: '20px'}}>
-      <ul>
+    <Flex height="100vh" p={20} flexFlow="column" bg="gray.100">
+      <Heading as="h2" size="2xl" mb={4} >Spaced check-in/out 🚀</Heading>
+      <Flex>
         {types.map((type) => {
-          return <li key={type}
-                     style={{ color: type === currentType ? 'blue' : 'black' }}
-                     onClick={() => {
-                       setType(type)
-                     }}>
+          return <Heading as="h3"
+                          mr={10}
+                          mb={6}
+                          size="md"
+                          key={type}
+                          style={{
+                            color: type === currentType ? 'tomato' : 'black',
+                            textDecoration: type === currentType ? 'underline' : ''
+                          }}
+                          onClick={() => {
+                            setType(type);
+                          }}>
             {type}
-          </li>
+          </Heading>;
         })}
-      </ul>
-      <h1 onClick={() => nextQuestion()}>
-        {question}
-      </h1>
-    </StyledPage>
-  )
+      </Flex>
+      <Flex height="50vh" direction="column" p={12} rounded={6} alignItems="center" justifyContent="center">
+        <Heading>{question}</Heading>
+        <Button mt={8} onClick={() => nextQuestion()} colorScheme="red" variant="solid" size="lg">
+          shuffle
+        </Button>
+      </Flex>
+    </Flex>
+  );
 }
 
 export default Index;
