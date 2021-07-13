@@ -43,5 +43,13 @@
       "tags": [],
       "implicitDependencies": ["ui"]
     }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
   }
 }

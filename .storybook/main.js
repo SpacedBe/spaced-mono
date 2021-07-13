@@ -1,10 +1,10 @@
-const path = require("path")
+const path = require('path');
 
-const toPath = (_path) => path.join(process.cwd(), _path)
+const toPath = (_path) => path.join(process.cwd(), _path);
 
 module.exports = {
   stories: [],
-  addons: ['@storybook/addon-knobs/register'],
+  addons: ['@storybook/addon-essentials', '@storybook/addon-knobs'],
   webpackFinal: async (config) => {
     return {
       ...config,
@@ -12,11 +12,11 @@ module.exports = {
         ...config.resolve,
         alias: {
           ...config.resolve.alias,
-          "@emotion/core": toPath("node_modules/@emotion/react"),
-          "@emotion/styled": toPath("node_modules/@emotion/styled"),
-          "emotion-theming": toPath("node_modules/@emotion/react"),
-        }
-      }
+          '@emotion/core': toPath('node_modules/@emotion/react'),
+          '@emotion/styled': toPath('node_modules/@emotion/styled'),
+          'emotion-theming': toPath('node_modules/@emotion/react'),
+        },
+      },
     };
-  }
+  },
 };
