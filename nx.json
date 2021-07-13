@@ -36,6 +36,13 @@
       "tags": [],
       "implicitDependencies": ["check-in"]
     },
+    "lottie-embed": {
+      "tags": []
+    },
+    "lottie-embed-e2e": {
+      "tags": [],
+      "implicitDependencies": ["lottie-embed"]
+    },
     "ui": {
       "tags": []
     },
