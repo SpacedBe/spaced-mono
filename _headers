@@ -1,2 +1,4 @@
 /*
   Access-Control-Allow-Origin: *
+/fonts/*
+  Access-Control-Allow-Origin: *
