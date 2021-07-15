@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import Lottie from 'react-lottie-player';
 
 import StoryblokClient from 'storyblok-js-client';
-import * as fs from 'fs';
 
 const Storyblok = new StoryblokClient({
   accessToken: 'FjShzi7cK7pUlwc6BguCGQtt',
