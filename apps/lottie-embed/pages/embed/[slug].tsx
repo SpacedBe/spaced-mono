@@ -3,19 +3,20 @@ import Lottie from 'react-lottie-player';
 
 import StoryblokClient from 'storyblok-js-client';
 
-const Storyblok = new StoryblokClient({
-  accessToken: 'FjShzi7cK7pUlwc6BguCGQtt',
-  cache: {
-    clear: 'auto',
-    type: 'memory'
-  }
-});
 
 const StyledPage = styled.div`
   min-height: 100vh;
 `;
 
 export async function getStaticPaths() {
+  const Storyblok = new StoryblokClient({
+    accessToken: 'FjShzi7cK7pUlwc6BguCGQtt',
+    cache: {
+      clear: 'auto',
+      type: 'memory'
+    }
+  });
+
   const params = {
     version: 'published' // or 'published'
   };
@@ -33,7 +34,14 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  // loads the story from the Storyblok API
+  const Storyblok = new StoryblokClient({
+    accessToken: 'FjShzi7cK7pUlwc6BguCGQtt',
+    cache: {
+      clear: 'auto',
+      type: 'memory'
+    }
+  });
+  
   const { data } = await Storyblok.get(`cdn/stories/animations/${params.slug}`, {
     version: 'published' // or 'published'
   });
