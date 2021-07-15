@@ -18,7 +18,6 @@ const firebaseConfig = {
 
 function CustomApp({ Component, pageProps }: AppProps) {
   return (
-
     <FirebaseAppProvider firebaseConfig={firebaseConfig}>
       <Head>
         <title>Welcome to lottie-embed!</title>
